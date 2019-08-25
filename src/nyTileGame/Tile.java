@@ -18,10 +18,14 @@ public class Tile {
         return this.numberOfDesignRemaining;
     }
 
-    public void removeDesignElement(DesignInsideTile design)
-    {
+    public void removeDesignElement(DesignInsideTile design) {
         this.designElement.remove(design);
         this.numberOfDesignRemaining = this.numberOfDesignRemaining + 1;
+    }
+
+    public List<DesignInsideTile> getElementsInsideTile()
+    {
+        return this.designElement;
     }
 
 

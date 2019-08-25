@@ -6,16 +6,14 @@ public class DesignInsideTile {
 
     private String shape;
 
-    public DesignInsideTile(String color, String shape)
-    {
+    public DesignInsideTile(String color, String shape) {
         this.color = color;
 
         this.shape = shape;
 
     }
 
-    public String getColor()
-    {
+    public String getColor() {
         return this.color;
     }
 
@@ -24,8 +22,7 @@ public class DesignInsideTile {
         return this.shape;
     }
 
-    public boolean equals (Object obj)
-    {
+    public boolean equals (Object obj) {
         if(obj instanceof DesignInsideTile)
         {
             DesignInsideTile design = (DesignInsideTile) obj;

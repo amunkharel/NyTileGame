@@ -22,6 +22,12 @@ public class Board {
             System.out.println("Cannot have odd number of tiles in the program \n");
             System.exit(0);
         }
+
+        if(numberOfTiles < 20 || numberOfTiles > 50) {
+            System.out.println("Number of Tiles should be between 20 and 50 \n");
+            System.exit(0);
+        }
+
         int counter = 0;
 
         this.numberOfTiles = numberOfTiles;

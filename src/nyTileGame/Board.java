@@ -14,7 +14,7 @@ public class Board {
             "yellow", "red", "blue", "green", "purple" , "pink"};
 
     private String shapes[] = new String[] {
-            "circle", "rectangle", "triangle", "polygon" };
+            "curved_rectangle", "rectangle", "vertical_rectangle", "oval", "vertical_oval" };
 
     public Board(int numberOfTiles) {
 

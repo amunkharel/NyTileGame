@@ -13,9 +13,20 @@ public class Display {
 
     private GraphicsContext gc;
 
+    private Board board;
+
+    private int numberOfTiles;
+
     public Display(int numberOfTiles, Canvas canvas, Board board) {
         this.canvas = canvas;
 
+        this.numberOfTiles = numberOfTiles;
+
+        this.board = board;
+
+    }
+
+    public void updateCanvas() {
 
         int fixedRow = (int) numberOfTiles/7;
 
@@ -69,7 +80,6 @@ public class Display {
             }
 
         }
-
     }
 
     public Canvas getCanvas() {
@@ -123,4 +133,6 @@ public class Display {
         }
 
     }
+
+
 }

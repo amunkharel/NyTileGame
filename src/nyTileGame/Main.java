@@ -20,7 +20,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Text current_score = new Text();
+        int number_of_tiles = 30;
+
+        Board board = new Board(number_of_tiles);
+
+        /*Text current_score = new Text();
 
         current_score.setText("Current Score is 19");
         current_score.setFont(Font.font("Verdana", 20));
@@ -28,11 +32,15 @@ public class Main extends Application {
         Text longest_streak = new Text();
 
         longest_streak.setText("Longest Run is 100");
-        longest_streak.setFont(Font.font("Verdana", 20));
+        longest_streak.setFont(Font.font("Verdana", 20)); */
 
 
         BorderPane bp = new BorderPane();
         Canvas canvas = new Canvas (560 ,560);
+
+
+
+        /*
         GraphicsContext gc = canvas.getGraphicsContext2D ();
         gc. setFill (Color.BLUE );
         gc. fillRect (0 ,0 ,560 ,560);
@@ -49,14 +57,19 @@ public class Main extends Application {
         gc.setFill(Color.BLUE);
         gc. fillRect (400 ,0 ,80 ,80);
         gc.setFill(Color.KHAKI);
-        gc. fillRect (480 ,0 ,80 ,80);
+        gc. fillRect (480 ,0 ,80 ,80);*/
+
+        Display display = new Display(number_of_tiles, canvas, board);
+
+        canvas = display.getCanvas();
+
 
 
         bp.setCenter(canvas);
 
-        bp.setRight(current_score);
+        /*bp.setRight(current_score);
 
-        bp.setLeft(longest_streak);
+        bp.setLeft(longest_streak); */
 
 
         Scene scene = new Scene(bp, 800, 800);

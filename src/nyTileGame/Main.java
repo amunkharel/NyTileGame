@@ -11,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main extends Application {
@@ -63,18 +62,11 @@ public class Main extends Application {
         canvas.setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println(" pressed " + event.getX() + " " + event.getY());
                  e = new EventHandler(event.getX(), event.getY(), board);
-                 tileNumber = e.getTileNumber();
-                designs = tile[tileNumber].getElementsInsideTile();
+                 e.handleClick();
             }
         });
 
-
-
-        display.updateCanvas();
-
-        canvas = display.getCanvas();
 
 
 
@@ -85,8 +77,6 @@ public class Main extends Application {
         bp.setLeft(longest_streak);
 
 
-
-
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
@@ -94,17 +84,7 @@ public class Main extends Application {
         AnimationTimer animator = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                int counter = 0;
 
-                Iterator<DesignInsideTile> iter = designs.iterator();
-                while (iter.hasNext()) {
-                    DesignInsideTile design = iter.next();
-
-                    if (counter == 0 ){
-                        iter.remove();
-                    }
-                    counter++;
-                }
                 display.updateCanvas();
 
 

@@ -45,12 +45,18 @@ public class Display {
                 gc. setFill (Color.KHAKI );
                 gc. fillRect (j * 80 , i * 80 ,80 ,80);
 
-
-
                 designs = tile[counter].getElementsInsideTile();
 
                 for (DesignInsideTile design : designs){
                     fillTillWithDesign(i, j, design.getColor(), design.getShape());
+                }
+
+                if(board.isClicked()) {
+                    if(counter == board.getCurrentTile()) {
+                        gc.setStroke(Color.RED);
+                        gc.setLineWidth(5);
+                        gc.strokeRect(j*80, i*80, 80, 80 );
+                    }
                 }
                 counter++;
 

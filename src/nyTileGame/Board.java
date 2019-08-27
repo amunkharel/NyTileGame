@@ -10,6 +10,10 @@ public class Board {
 
     private Tile [] tiles;
 
+    private boolean isClicked = false;
+
+    private int currentTile;
+
     private String colors[] = new String[] {
             "yellow", "red", "blue", "green", "purple" , "pink"};
 
@@ -95,6 +99,20 @@ public class Board {
 
         }
 
+    }
+
+    public void clickBoard(int tileNumber) {
+        this.isClicked = true;
+        this.currentTile = tileNumber;
+
+    }
+
+    public boolean isClicked() {
+        return isClicked;
+    }
+
+    public int getCurrentTile() {
+        return this.currentTile;
     }
 
     public int getNumberOfTiles() {

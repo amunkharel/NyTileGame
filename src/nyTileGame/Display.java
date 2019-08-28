@@ -55,7 +55,7 @@ public class Display {
                     if(counter == board.getCurrentTile()) {
                         gc.setStroke(Color.RED);
                         gc.setLineWidth(5);
-                        gc.strokeRect(j*80, i*80, 80, 80 );
+                        gc.strokeRect(j*80, i*80, 76, 76 );
                     }
                 }
                 counter++;
@@ -78,6 +78,15 @@ public class Display {
                 for (DesignInsideTile design : designs){
                     fillTillWithDesign(i, j, design.getColor(), design.getShape());
                 }
+
+                if(board.isClicked()) {
+                    if(counter == board.getCurrentTile()) {
+                        gc.setStroke(Color.RED);
+                        gc.setLineWidth(5);
+                        gc.strokeRect(j*80, i*80, 76, 76 );
+                    }
+                }
+
                 counter++;
 
                 gc.setStroke(Color.BLACK);

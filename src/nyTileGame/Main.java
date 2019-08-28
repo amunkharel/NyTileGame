@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class Main extends Application {
 
-    public static int number_of_tiles = 50;
+    public static int number_of_tiles = 4;
 
     Board board = new Board(number_of_tiles);
 
@@ -40,6 +41,11 @@ public class Main extends Application {
 
     Scene scene = new Scene(bp, 800, 800);
 
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+    boolean gameOver = false;
+
+
 
 
     @Override
@@ -55,6 +61,16 @@ public class Main extends Application {
         longest_streak.setText("Longest Run is 100");
         longest_streak.setFont(Font.font("Verdana", 20));
 
+        for (int i = 0; i < number_of_tiles; i++)
+        {
+            System.out.println("Tile Number " + i);
+            tile = board.getTiles();
+            for (int j = 0; j < 3; j ++)
+            {
+                System.out.println(tile[i].designElement.get(j).getShape());
+                System.out.println(tile[i].designElement.get(j).getColor());
+            }
+        }
 
 
 
@@ -62,8 +78,28 @@ public class Main extends Application {
         canvas.setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+
+                int counter = 0;
                  e = new EventHandler(event.getX(), event.getY(), board);
                  e.handleClick();
+
+                for (int i = 0; i < number_of_tiles; i++)
+                {
+                    if(tile[i].getNumberOfDesignRemaining() >= 3)
+                    {
+                        counter++;
+                    }
+                }
+
+                if(counter == number_of_tiles)
+                {
+                    alert.setTitle("Game Over");
+                    alert.setContentText("You have finished all the clicks");
+                    alert.showAndWait();
+
+                    stage.close();
+
+                }
             }
         });
 
@@ -86,7 +122,6 @@ public class Main extends Application {
             public void handle(long now) {
 
                 display.updateCanvas();
-
 
             }
         };

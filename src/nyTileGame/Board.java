@@ -27,7 +27,7 @@ public class Board {
             System.exit(0);
         }
 
-        if(numberOfTiles < 20 || numberOfTiles > 50) {
+        if(numberOfTiles < 4 || numberOfTiles > 50) {
             System.out.println("Number of Tiles should be between 20 and 50 \n");
             System.exit(0);
         }
@@ -35,6 +35,8 @@ public class Board {
         int counter = 0;
 
         this.numberOfTiles = numberOfTiles;
+
+        int upperBound = 2;
 
         int numberOfDesign = (3 * numberOfTiles)/2;
 
@@ -77,9 +79,10 @@ public class Board {
 
             for (int j = 0; j < 2; j++) {
 
+
                 if(list.size() == 1){
 
-                    this.tiles[list.get(0)].addDesignElement(design[counter]);
+                    this.tiles[list.get(0)].addDesignElement(design[counter - 1]);
 
                     if(this.tiles[list.get(0)].getNumberOfDesignRemaining() == 0){
                         list.remove(0);
@@ -105,6 +108,10 @@ public class Board {
         this.isClicked = true;
         this.currentTile = tileNumber;
 
+    }
+
+    public void unclickBoard() {
+        this.isClicked = false;
     }
 
     public boolean isClicked() {

@@ -18,6 +18,7 @@ public class EventHandler {
         tileNumber = 7*yCor + xCor;
 
 
+
         //Test Code
         Tile [] tile = board.getTiles();
         Tile current_tile;
@@ -69,6 +70,9 @@ public class EventHandler {
         int j = 0;
         boolean canLoop = true;
 
+        List<Integer> iValues = new ArrayList<>();
+        List<Integer> jValues = new ArrayList<>();
+
         List<DesignInsideTile> current_tile_designs = new ArrayList<>();
 
         List<DesignInsideTile> clicked_tile_designs = new ArrayList<>();
@@ -116,16 +120,21 @@ public class EventHandler {
 
                     for(j = 0; j < number_clicked_tile_designs; j++)
                     {
+                        if(iValues.contains(i) || jValues.contains(j)) {
+                            canLoop = false;
+                        }
                         if(current_designs[i].equals(clicked_designs[j]) && canLoop)
                         {
                             successfulClick = true;
                             tile[board.getCurrentTile()].removeDesignElement(current_designs[i]);
                             tile[tileNumber].removeDesignElement(clicked_designs[j]);
-                            canLoop = false;
+                            iValues.add(i);
+                            jValues.add(j);
+
                         }
+                        canLoop = true;
                     }
 
-                    canLoop = true;
                 }
 
             }

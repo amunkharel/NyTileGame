@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Main extends Application {
 
-    private static int number_of_tiles = 20;
+    private static int number_of_tiles = 50;
 
     private Board board = new Board(number_of_tiles);
 
@@ -64,6 +64,7 @@ public class Main extends Application {
         for (int i = 0; i < number_of_tiles; i++)
         {
             System.out.println("Tile Number " + i);
+            System.out.println("Design Remaining: " + tile[i].getNumberOfDesignRemaining());
             tile = board.getTiles();
             for (int j = 0; j < 3; j ++)
             {

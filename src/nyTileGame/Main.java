@@ -61,20 +61,6 @@ public class Main extends Application {
         longest_streak.setText("Longest Run is " + score.getBestRun());
         longest_streak.setFont(Font.font("Verdana", 20));
 
-        for (int i = 0; i < number_of_tiles; i++)
-        {
-            System.out.println("Tile Number " + i);
-            System.out.println("Design Remaining: " + tile[i].getNumberOfDesignRemaining());
-            tile = board.getTiles();
-            for (int j = 0; j < 3; j ++)
-            {
-                System.out.println(tile[i].designElement.get(j).getShape());
-                System.out.println(tile[i].designElement.get(j).getColor());
-            }
-        }
-
-
-
 
         canvas.setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
             @Override

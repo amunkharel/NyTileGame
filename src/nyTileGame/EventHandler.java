@@ -7,12 +7,15 @@ import java.util.List;
 public class EventHandler {
     private int tileNumber;
     private Board board;
+    private Score score;
 
-    public EventHandler(double x, double y, Board board)
+    public EventHandler(double x, double y, Board board, Score score)
     {
         this.board = board;
         int xCor = (int) x/80;
         int yCor = (int) y/80;
+
+        this.score = score;
 
 
         tileNumber = 7*yCor + xCor;
@@ -25,6 +28,7 @@ public class EventHandler {
         int i = 0;
         int j = 0;
         boolean canLoop = true;
+        int currentRun = 0;
 
         List<Integer> iValues = new ArrayList<>();
         List<Integer> jValues = new ArrayList<>();
@@ -86,12 +90,16 @@ public class EventHandler {
                             tile[tileNumber].removeDesignElement(clicked_designs[j]);
                             iValues.add(i);
                             jValues.add(j);
+                            score.setCurrentRun();
 
                         }
                         canLoop = true;
                     }
 
                 }
+
+                currentRun = score.getCurrentRun();
+                score.setBestRun(currentRun);
 
             }
 
@@ -107,6 +115,7 @@ public class EventHandler {
 
             if(!successfulClick) {
                 System.out.println("The clicked tile does not have the design");
+                score.resetCurrentRun();
             }
 
 

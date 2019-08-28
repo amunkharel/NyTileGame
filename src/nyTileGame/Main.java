@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Main extends Application {
 
-    private static int number_of_tiles = 50;
+    private static int number_of_tiles = 20;
 
     private Board board = new Board(number_of_tiles);
 
@@ -43,7 +43,7 @@ public class Main extends Application {
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-    private Score score = new Score();
+    private Score score = new Score(current_score, longest_streak);
 
 
 
@@ -53,12 +53,12 @@ public class Main extends Application {
 
 
 
-        current_score.setText("Current Score is " + score.getCurrentRun());
+        current_score.setText("Current Score is 0");
         current_score.setFont(Font.font("Verdana", 20));
 
 
 
-        longest_streak.setText("Longest Run is " + score.getBestRun());
+        longest_streak.setText("Longest Run is 0");
         longest_streak.setFont(Font.font("Verdana", 20));
 
 
@@ -67,7 +67,7 @@ public class Main extends Application {
             public void handle(MouseEvent event) {
 
                 int counter = 0;
-                 e = new EventHandler(event.getX(), event.getY(), board);
+                 e = new EventHandler(event.getX(), event.getY(), board, score);
                  e.handleClick();
 
                 for (int i = 0; i < number_of_tiles; i++)

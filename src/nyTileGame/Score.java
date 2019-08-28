@@ -1,19 +1,35 @@
 package nyTileGame;
 
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+
 public class Score {
-    private int currentRun;
+    private int currentRun = 0;
 
     private int bestRun = 0;
 
-    public void setCurrentRun(int score)
+    private Text currentScore;
+
+    private Text longestStreak;
+
+    public Score(Text currentScore, Text longestStreak)
     {
-        this.currentRun = 0;
-        this.currentRun = currentRun + 0;
+        this.currentScore = currentScore;
+        this.longestStreak = longestStreak;
+    }
+
+    public void setCurrentRun()
+    {
+        this.currentRun = currentRun + 1;
+        this.currentScore.setText("Current Score is " + this.currentRun);
+        this.currentScore.setFont(Font.font("Verdana", 20));
     }
 
     public void resetCurrentRun()
     {
         this.currentRun = 0;
+        this.currentScore.setText("Current Score is 0");
+        this.currentScore.setFont(Font.font("Verdana", 20));
     }
 
     public void setBestRun(int currentRun)
@@ -22,17 +38,19 @@ public class Score {
         {
             this.bestRun = currentRun;
         }
+        this.longestStreak.setText("Longest Run is " + this.bestRun);
+        this.longestStreak.setFont(Font.font("Verdana", 20));
     }
 
     public int getCurrentRun()
     {
-        return 5;
+        return this.currentRun;
 
     }
 
     public int getBestRun()
     {
-        return 10;
+        return this.bestRun;
 
     }
 

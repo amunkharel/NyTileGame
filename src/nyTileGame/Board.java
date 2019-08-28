@@ -38,10 +38,15 @@ public class Board {
 
         int upperBound = 2;
 
+
         int numberOfDesign = (3 * numberOfTiles)/2;
 
 
         ArrayList<Integer> list = new ArrayList<>();
+
+        ArrayList<Integer> list_with_one_remaining = new ArrayList<>();
+
+        ArrayList<Integer> list_with_two_remaining = new ArrayList<>();
 
         Random rand = new Random();
 
@@ -66,40 +71,106 @@ public class Board {
 
         }
 
-
         for (int i = 0; i < numberOfTiles; i++) {
             list.add(new Integer(i));
         }
 
-        while(!list.isEmpty()){
 
+        for(int a = 0; a < numberOfTiles/2; a ++) {
             Collections.shuffle(list);
-
-
 
             for (int j = 0; j < 2; j++) {
 
 
-                if(list.size() == 1){
+                if(list.size() == 1)
+                {
 
-                    this.tiles[list.get(0)].addDesignElement(design[counter - 1]);
+                    this.tiles[list.get(0)].addDesignElement(design[counter]);
 
-                    if(this.tiles[list.get(0)].getNumberOfDesignRemaining() == 0){
-                        list.remove(0);
-                    }
+                    list_with_two_remaining.add(list.get(0));
 
                 }
-                else{
+
+                else
+                {
 
                     this.tiles[list.get(j)].addDesignElement(design[counter]);
 
-                    if(this.tiles[list.get(j)].getNumberOfDesignRemaining() == 0){
-                        list.remove(j);
-                    }
-                }
-            }
-            counter++;
+                    list_with_two_remaining.add(list.get(j));
 
+                    list.remove(j);
+
+
+                }
+
+            }
+
+
+            counter++;
+        }
+
+
+        for(int b = 0; b < numberOfTiles/2; b ++) {
+            Collections.shuffle(list_with_two_remaining);
+
+            for (int j = 0; j < 2; j++) {
+
+
+                if(list_with_two_remaining.size() == 1)
+                {
+
+                    this.tiles[list_with_two_remaining.get(0)].addDesignElement(design[counter]);
+
+                    list_with_one_remaining.add(list_with_two_remaining.get(0));
+
+                }
+
+                else
+                {
+
+                    this.tiles[list_with_two_remaining.get(j)].addDesignElement(design[counter]);
+
+                    list_with_one_remaining.add(list_with_two_remaining.get(j));
+
+                    list_with_two_remaining.remove(j);
+
+
+                }
+
+            }
+
+
+            counter++;
+        }
+
+
+
+
+        for(int c = 0; c < numberOfTiles/2; c ++) {
+            Collections.shuffle(list_with_one_remaining);
+
+            for (int j = 0; j < 2; j++) {
+
+
+                if(list_with_one_remaining.size() == 1)
+                {
+
+                    this.tiles[list_with_one_remaining.get(0)].addDesignElement(design[counter]);
+
+                }
+
+                else
+                {
+
+                    this.tiles[list_with_one_remaining.get(j)].addDesignElement(design[counter]);
+
+                    list_with_one_remaining.remove(j);
+                }
+
+            }
+
+
+            counter++;
         }
 
     }

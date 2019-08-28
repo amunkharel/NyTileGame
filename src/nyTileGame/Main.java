@@ -16,34 +16,34 @@ import java.util.List;
 
 public class Main extends Application {
 
-    public static int number_of_tiles = 4;
+    private static int number_of_tiles = 20;
 
-    Board board = new Board(number_of_tiles);
+    private Board board = new Board(number_of_tiles);
 
-    List<DesignInsideTile> designs = new ArrayList<>();
+    private List<DesignInsideTile> designs = new ArrayList<>();
 
-    Tile [] tile = board.getTiles();
+    private Tile [] tile = board.getTiles();
 
-    int tileNumber;
+    private int tileNumber;
 
-    EventHandler e;
+    private EventHandler e;
 
-    Text current_score = new Text();
+    private Text current_score = new Text();
 
-    Text longest_streak = new Text();
+    private Text longest_streak = new Text();
 
 
-    BorderPane bp = new BorderPane();
+    private BorderPane bp = new BorderPane();
 
-    Canvas canvas = new Canvas (560 ,640);
+    private Canvas canvas = new Canvas (560 ,640);
 
-    Display display = new Display(number_of_tiles, canvas, board);
+    private Display display = new Display(number_of_tiles, canvas, board);
 
-    Scene scene = new Scene(bp, 800, 800);
+    private Scene scene = new Scene(bp, 800, 800);
 
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-    boolean gameOver = false;
+    private Score score = new Score();
 
 
 
@@ -53,12 +53,12 @@ public class Main extends Application {
 
 
 
-        current_score.setText("Current Score is 19");
+        current_score.setText("Current Score is " + score.getCurrentRun());
         current_score.setFont(Font.font("Verdana", 20));
 
 
 
-        longest_streak.setText("Longest Run is 100");
+        longest_streak.setText("Longest Run is " + score.getBestRun());
         longest_streak.setFont(Font.font("Verdana", 20));
 
         for (int i = 0; i < number_of_tiles; i++)

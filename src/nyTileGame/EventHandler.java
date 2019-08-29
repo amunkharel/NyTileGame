@@ -20,6 +20,13 @@ public class EventHandler {
 
         tileNumber = 7*yCor + xCor;
 
+        int board_tileNumber = board.getNumberOfTiles();
+
+        if(tileNumber > board_tileNumber - 1)
+        {
+            tileNumber = 0;
+        }
+
 
     }
 

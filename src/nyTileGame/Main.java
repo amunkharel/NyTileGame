@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Main extends Application {
 
-    private static int number_of_tiles = 20;
+    private static int number_of_tiles = 50;
 
     private Board board = new Board(number_of_tiles);
 

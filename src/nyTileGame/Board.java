@@ -2,6 +2,7 @@ package nyTileGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Board {
@@ -35,8 +36,6 @@ public class Board {
         int counter = 0;
 
         this.numberOfTiles = numberOfTiles;
-
-        int upperBound = 2;
 
 
         int numberOfDesign = (3 * numberOfTiles)/2;
@@ -171,6 +170,35 @@ public class Board {
 
 
             counter++;
+        }
+        List<DesignInsideTile> designInsideTiles = new ArrayList<>();
+        int l = 0;
+        DesignInsideTile [] designs = new DesignInsideTile[3];
+        for(int d = 0; d < numberOfTiles; d++) {
+            designInsideTiles = this.tiles[d].getElementsInsideTile();
+
+            for(DesignInsideTile design1 : designInsideTiles)
+            {
+                designs[l] = design1;
+                l++;
+            }
+            l = 0;
+
+            if(design[0].equals(design[1])) {
+                tiles[d].removeDesignElement(design[0]);
+                tiles[d].removeDesignElement(design[1]);
+            }
+
+            else if(design[0].equals(design[2])) {
+                tiles[d].removeDesignElement(design[0]);
+                tiles[d].removeDesignElement(design[2]);
+            }
+
+            else if(design[1].equals(design[2])) {
+                tiles[d].removeDesignElement(design[1]);
+                tiles[d].removeDesignElement(design[2]);
+            }
+
         }
 
     }

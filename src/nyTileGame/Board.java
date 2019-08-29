@@ -171,35 +171,24 @@ public class Board {
 
             counter++;
         }
-        List<DesignInsideTile> designInsideTiles = new ArrayList<>();
-        int l = 0;
-        DesignInsideTile [] designs = new DesignInsideTile[3];
-        for(int d = 0; d < numberOfTiles; d++) {
-            designInsideTiles = this.tiles[d].getElementsInsideTile();
 
-            for(DesignInsideTile design1 : designInsideTiles)
-            {
-                designs[l] = design1;
-                l++;
-            }
-            l = 0;
-
-            if(design[0].equals(design[1])) {
-                tiles[d].removeDesignElement(design[0]);
-                tiles[d].removeDesignElement(design[1]);
+        for(int k = 0; k < numberOfTiles; k++) {
+            if(this.tiles[k].getElementsInsideTile().get(0).equals(this.tiles[k].getElementsInsideTile().get(1))){
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(0));
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(0));
             }
 
-            else if(design[0].equals(design[2])) {
-                tiles[d].removeDesignElement(design[0]);
-                tiles[d].removeDesignElement(design[2]);
+            else if(this.tiles[k].getElementsInsideTile().get(0).equals(this.tiles[k].getElementsInsideTile().get(2))){
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(0));
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(1));
             }
 
-            else if(design[1].equals(design[2])) {
-                tiles[d].removeDesignElement(design[1]);
-                tiles[d].removeDesignElement(design[2]);
+            else if(this.tiles[k].getElementsInsideTile().get(1).equals(this.tiles[k].getElementsInsideTile().get(2))){
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(1));
+                this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(1));
             }
-
         }
+
 
     }
 

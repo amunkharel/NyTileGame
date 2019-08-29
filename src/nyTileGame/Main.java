@@ -1,5 +1,11 @@
+/**
+ * Project 1, Controller class to run the New York Tile Game
+ * @version Date 2019-08-30
+ * @author Amun Kharel
+ *
+ *
+ */
 package nyTileGame;
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,35 +16,42 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends Application {
 
-    private static int number_of_tiles = 50;
+    /** Number of Tiles in the board*/
+    private static int number_of_tiles = 28;
 
+    /** Board object for bookkeeping tiles and designs inside each tile */
     private Board board = new Board(number_of_tiles);
 
+    /** Design inside each tile */
     private List<DesignInsideTile> designs = new ArrayList<>();
 
+    /** Tile object inside the board bookkeeper*/
     private Tile [] tile = board.getTiles();
 
-    private int tileNumber;
-
+    /** Handles click of a mouse in the canvas of Tile Game*/
     private EventHandler e;
 
+    /** Text to keep track of the current score*/
     private Text current_score = new Text();
 
+    /** Text to keep track of the longest streak in the game*/
     private Text longest_streak = new Text();
 
-
+    /** Board Pane where the canvas is stored*/
     private BorderPane bp = new BorderPane();
 
+    /** Canvas where the board is created*/
     private Canvas canvas = new Canvas (560 ,640);
 
+    /** GUI of the game board*/
     private Display display = new Display(number_of_tiles, canvas, board);
 
+    /** Scene where the game border pane is stored*/
     private Scene scene = new Scene(bp, 800, 800);
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);

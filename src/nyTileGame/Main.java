@@ -22,7 +22,7 @@ import java.util.List;
 public class Main extends Application {
 
     /** Number of Tiles in the board*/
-    private static int number_of_tiles = 28;
+    private static int number_of_tiles = 50;
 
     /** Board object for bookkeeping tiles and designs inside each tile */
     private Board board = new Board(number_of_tiles);
@@ -54,26 +54,32 @@ public class Main extends Application {
     /** Scene where the game border pane is stored*/
     private Scene scene = new Scene(bp, 800, 800);
 
+    /** Alert Window after the board detects that the game is over*/
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+    /** Score class to keep track of current score and the longest streak*/
     private Score score = new Score(current_score, longest_streak);
 
 
-
+    /**
+     * Method where the program starts. This method pulls out logic and gui board
+     * to make this game work
+     *
+     * @param Stage stage, Stage where the Board GUI for this game is placed
+     */
 
     @Override
     public void start(Stage stage) throws Exception {
 
-
-
+        //sets current score text to 0 at the beginning of the game
         current_score.setText("Current Score is 0");
         current_score.setFont(Font.font("Verdana", 20));
 
-
-
+        //sets longest streak to 0 at the beginning of the game
         longest_streak.setText("Longest Run is 0");
         longest_streak.setFont(Font.font("Verdana", 20));
 
+        //handles the event when mouse is pressed on the canvas object
 
         canvas.setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
             @Override
@@ -91,6 +97,7 @@ public class Main extends Application {
                     }
                 }
 
+                //if all the designs are deleted removed from all the tiles, the game is over
                 if(counter == number_of_tiles)
                 {
                     alert.setTitle("Game Over");
@@ -105,18 +112,21 @@ public class Main extends Application {
 
 
 
-
+        //sets canvas in the center of the board
         bp.setCenter(canvas);
 
+        //sets current score in the right side of the board
         bp.setRight(current_score);
 
+        //sets longest streak in the left side of the board
         bp.setLeft(longest_streak);
 
-
+        //puts the scene in the stage
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
 
+        //continuously updates the canvas of the board
         AnimationTimer animator = new AnimationTimer() {
             @Override
             public void handle(long now) {

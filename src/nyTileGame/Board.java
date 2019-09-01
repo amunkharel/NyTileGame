@@ -5,22 +5,42 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Project 1, Class to handle the board backend logic
+ * @version Date 2019-08-30
+ * @author Amun Kharel
+ *
+ *
+ */
+
 public class Board {
 
+    /** Number of tiles in the board*/
     private int numberOfTiles;
 
+    /** Tiles object for the game*/
     private Tile [] tiles;
 
+    /** To check if the board has been clicked before*/
     private boolean isClicked = false;
 
+    /** Current Tile which is clicked*/
     private int currentTile;
 
+    /** Colors available for the game*/
     private String colors[] = new String[] {
             "yellow", "red", "blue", "green", "purple" , "pink"};
 
+    /** Shapes available for the game*/
     private String shapes[] = new String[] {
             "curved_rectangle", "rectangle", "vertical_rectangle", "oval", "vertical_oval" };
 
+
+    /**
+     * Constructor of board object
+     *
+     * @param int numberOfTiles, number of Tiles in the board
+     */
     public Board(int numberOfTiles) {
 
         if(numberOfTiles % 2 != 0) {
@@ -75,6 +95,7 @@ public class Board {
         }
 
 
+        //adds one design element to all the tiles until there are no tiles left
         for(int a = 0; a < numberOfTiles/2; a ++) {
             Collections.shuffle(list);
 
@@ -109,6 +130,7 @@ public class Board {
         }
 
 
+        //adds second design element to all the tiles until there are no tiles left
         for(int b = 0; b < numberOfTiles/2; b ++) {
             Collections.shuffle(list_with_two_remaining);
 
@@ -144,7 +166,7 @@ public class Board {
 
 
 
-
+        //adds third design element to all the tiles until there are no tiles left
         for(int c = 0; c < numberOfTiles/2; c ++) {
             Collections.shuffle(list_with_one_remaining);
 
@@ -172,6 +194,7 @@ public class Board {
             counter++;
         }
 
+        //if there are two designs assigned randomly in the same tile, it removes the designs to make the game complete
         for(int k = 0; k < numberOfTiles; k++) {
             if(this.tiles[k].getElementsInsideTile().get(0).equals(this.tiles[k].getElementsInsideTile().get(1))){
                 this.tiles[k].removeDesignElement(this.tiles[k].getElementsInsideTile().get(0));
@@ -192,28 +215,48 @@ public class Board {
 
     }
 
+    /**
+     * Clicks the given tile
+     *
+     * @param int tileNumber, Number of the tile in array
+     */
     public void clickBoard(int tileNumber) {
         this.isClicked = true;
         this.currentTile = tileNumber;
 
     }
 
+    /**
+     * Unclicks the board
+     */
     public void unclickBoard() {
         this.isClicked = false;
     }
 
+    /**
+     * Clicks the board
+     */
     public boolean isClicked() {
         return isClicked;
     }
 
+    /**
+     * Gets the current tile which is clicked
+     */
     public int getCurrentTile() {
         return this.currentTile;
     }
 
+    /**
+     * Get Number of tiles present in the board
+     */
     public int getNumberOfTiles() {
         return this.numberOfTiles;
     }
 
+    /**
+     * returns all the tile objects of the board
+     */
     public Tile[] getTiles() {
         return this.tiles;
     }

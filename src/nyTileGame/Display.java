@@ -7,16 +7,35 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Project 1, Class to handle GUI element of the board
+ * @version Date 2019-08-30
+ * @author Amun Kharel
+ *
+ *
+ */
+
 public class Display {
 
+    /** Canvas where the board is being made*/
     private Canvas canvas;
 
+    /** Graphics we are using over the canvas*/
     private GraphicsContext gc;
 
+    /** Board object of the game*/
     private Board board;
 
+    /** Number of Tiles in the board*/
     private int numberOfTiles;
 
+    /**
+     * Constructor to initialize GUI board for the game
+     *
+     * @param int numberOfTiles, number of Tiles in the board
+     * @param Canvas canvas, canvas where graphics is being done
+     * @param Board board, the board object for the game
+     */
     public Display(int numberOfTiles, Canvas canvas, Board board) {
         this.canvas = canvas;
 
@@ -26,6 +45,12 @@ public class Display {
 
     }
 
+
+    /**
+     * Function to update the canvas after each change is made
+     * in the backend of the board
+     *
+     */
     public void updateCanvas() {
 
         int fixedRow = (int) numberOfTiles/7;
@@ -96,11 +121,24 @@ public class Display {
 
         }
     }
-
+    /**
+     * Returns canvas of the board
+     *
+     * @return Canvas, return canvas where board is drawn
+     */
     public Canvas getCanvas() {
         return canvas;
     }
 
+    /**
+     * Takes in row, column, color and shape of the tile design and
+     * makes the design on the tile
+     *
+     * @param int i, row of the tile
+     * @param int j, column of the tile
+     * @param String color, color of the design
+     * @param String shape, shape of the design
+     */
     private void fillTillWithDesign(int i, int j, String color, String shape) {
         if(color.equals("yellow")){
             gc.setFill(Color.YELLOW);

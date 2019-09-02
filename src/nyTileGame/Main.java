@@ -22,10 +22,10 @@ import java.util.List;
 public class Main extends Application {
 
     /** Number of Tiles in the board*/
-    private static int number_of_tiles = 50;
+    private static int numberOfTiles = 50;
 
     /** Board object for bookkeeping tiles and designs inside each tile */
-    private Board board = new Board(number_of_tiles);
+    private Board board = new Board(numberOfTiles);
 
     /** Design inside each tile */
     private List<DesignInsideTile> designs = new ArrayList<>();
@@ -37,10 +37,10 @@ public class Main extends Application {
     private EventHandler e;
 
     /** Text to keep track of the current score*/
-    private Text current_score = new Text();
+    private Text currentScore = new Text();
 
     /** Text to keep track of the longest streak in the game*/
-    private Text longest_streak = new Text();
+    private Text longestStreak = new Text();
 
     /** Board Pane where the canvas is stored*/
     private BorderPane bp = new BorderPane();
@@ -49,7 +49,7 @@ public class Main extends Application {
     private Canvas canvas = new Canvas (560 ,640);
 
     /** GUI of the game board*/
-    private Display display = new Display(number_of_tiles, canvas, board);
+    private Display display = new Display(numberOfTiles, canvas, board);
 
     /** Scene where the game border pane is stored*/
     private Scene scene = new Scene(bp, 800, 800);
@@ -58,7 +58,7 @@ public class Main extends Application {
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /** Score class to keep track of current score and the longest streak*/
-    private Score score = new Score(current_score, longest_streak);
+    private Score score = new Score(currentScore, longestStreak);
 
 
     /**
@@ -72,12 +72,12 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         //sets current score text to 0 at the beginning of the game
-        current_score.setText("Current Score is 0");
-        current_score.setFont(Font.font("Verdana", 20));
+        currentScore.setText("Current Score is 0");
+        currentScore.setFont(Font.font("Verdana", 20));
 
         //sets longest streak to 0 at the beginning of the game
-        longest_streak.setText("Longest Run is 0");
-        longest_streak.setFont(Font.font("Verdana", 20));
+        longestStreak.setText("Longest Run is 0");
+        longestStreak.setFont(Font.font("Verdana", 20));
 
         //handles the event when mouse is pressed on the canvas object
 
@@ -89,7 +89,7 @@ public class Main extends Application {
                  e = new EventHandler(event.getX(), event.getY(), board, score);
                  e.handleClick();
 
-                for (int i = 0; i < number_of_tiles; i++)
+                for (int i = 0; i < numberOfTiles; i++)
                 {
                     if(tile[i].getNumberOfDesignRemaining() >= 3)
                     {
@@ -98,7 +98,7 @@ public class Main extends Application {
                 }
 
                 //if all the designs are deleted removed from all the tiles, the game is over
-                if(counter == number_of_tiles)
+                if(counter == numberOfTiles)
                 {
                     alert.setTitle("Game Over");
                     alert.setContentText("You have finished all the clicks");
@@ -116,10 +116,10 @@ public class Main extends Application {
         bp.setCenter(canvas);
 
         //sets current score in the right side of the board
-        bp.setRight(current_score);
+        bp.setRight(currentScore);
 
         //sets longest streak in the left side of the board
-        bp.setLeft(longest_streak);
+        bp.setLeft(longestStreak);
 
         //puts the scene in the stage
         stage.setScene(scene);

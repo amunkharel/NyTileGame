@@ -46,29 +46,29 @@ click to update the board objects, its tile and its design elements.
 
 1) Adding pair of design elements in the board-  <br>
 a) First we need to have even number of tiles on the board. If there are odd number of tiles 
-in the board, we might not have a pair of design element to finish the game
-b) First, we add one pair of element on all the tiles of the board
-c) Then, we add another pair of design element on all the tiles of the board
-d) Then, we add third pair of design element on all the tiles of the board
-e) If the same design element exists on the same tile, then the design elements will be removed to make sure that the game completes
+in the board, we might not have a pair of design element to finish the game <br>
+b) First, we add one pair of element on all the tiles of the board <br>
+c) Then, we add another pair of design element on all the tiles of the board <br>
+d) Then, we add third pair of design element on all the tiles of the board <br>
+e) If the same design element exists on the same tile, then the design elements will be removed to make sure that the game completes <br>
 
 
 
 ## Know Bugs and feature requests
 There are no  explicit bugs in the program since the game has always reached its completion in 10 trials with different sizes of board ranging from 20 tiles to 50 tiles. However, there are certain shortcomings in the program <br>
-1) Some tiles might not have 3 design elements, which is rare, because the way algorithm is set. 
+1) Some tiles might not have 3 design elements, which is rare, because the way algorithm is set. <br>
 If my code randomly  puts two designs with same shape and same color in the same tile, it will remove both designs to make sure game reaches its completion
 2) This game is pretty dynamic and size of board can be changed with ease. However, adding 4th design 
-inside the program might be a hassle because of lack of proper design planning and shortage of time. 
+inside the program might be a hassle because of lack of proper design planning and shortage of time.  <br>
 3) If you click inside the canvas that has no tile, the first tile will be clicked. Also, this is the way I setup my program 
-to remove any unwanted exception. However, this could have been handled properly. 
+to remove any unwanted exception. However, this could have been handled properly. <br>
 However, on the plus side, size of canvas is pretty well planned out. 
 
 
 ## References
 I did not explicitly use any resource to write my code. I mostly used Brooke's lecture on JavaFx to learn canvas painting 
 and animation timing. <br>
-StackOverflow and google was used to debug my errors
+StackOverflow and google was used to debug my errors <br>
 
 ## Author - Amun Kharel
 
